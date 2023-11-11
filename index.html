@@ -162,14 +162,14 @@
           locationSearch.style.marginTop = '-40px';
           locationHeader.style.opacity = '0'; // Hide the location header
           magnify.style.opacity = '1'
-          radio.style.display = "none"
+          radio.style.opacity = '0';
         });
 
         searchInput.addEventListener('blur', function () {
           locationSearch.style.marginTop = '40px'; // Adjust the initial margin-top value
           locationHeader.style.opacity = '1'; // Show the location header
           magnify.style.opacity = '0'
-          radio.style.display = "block"
+          radio.style.opacity = '1';
         });
       });
     </script>
