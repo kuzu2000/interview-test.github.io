@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&family=Montserrat:wght@300;400&family=Raleway:wght@500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ph-number">
+        <div class="navbar">
+          <span>&lt;</span>
+          <a href="#">Sign in</a>
+        </div>
+        <div class="description">
+          <h2>What's your <span>phone number?</span></h2>
+        </div>
+        <div class="input" id="input">
+          <select id="countryCode" name="countryCode">
+            <option value="United States (+1)">+ 1</option>
+            <option value="United Kingdoms (+44)">+ 44</option>
+            <option value="Australia (+61)">+ 61</option>
+            <option value="Poland (+48)">+ 48</option>
+            <option value="Myanmar (Burma) (+95)">+ 95</option>
+          </select>
+          <input
+            type="number"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="123456789"
+          />
+        </div>
+      </div>
+      <div class="next-btn">
+        <button id="next">Next</button>
+      </div>
+      <div class="yes-no">
+        <button id="different">Different Location?</button>
+        <button id="yes">Yes</button>
+      </div>
+      <div class="countries-container">
+        <div class="location-header">
+          <h1>Choose your current location</h1>
+        </div>
+        <div class="location-search">
+          <i class="fas fa-search search-icon"></i>
+          <input type="search" class="search-input" placeholder="Search..." />
+        </div>
+        <div class="locations"></div>
+        <div class="continue-btn">
+          <button>Continue</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const nextDiv = document.querySelector('.next-btn');
+      const yes = document.querySelector('.yes-no');
+      const nextBtn = document.querySelector('#next');
+      const phNumber = document.querySelector('.ph-number');
+      const country = document.querySelector('#countryCode');
+      const description = document.querySelector('.description');
+      const differentBtn = document.querySelector('#different');
+      const countriesContainer = document.querySelector('.countries-container');
+      const input = document.querySelector('#input');
+      nextBtn.addEventListener('click', () => {
+        phNumber.style.height = '80%';
+        setTimeout(() => {
+          while (phNumber.children.length > 1) {
+            phNumber.removeChild(phNumber.children[1]);
+          }
+          function typeWriterEffect(text, elementId) {
+            let i = 0;
+            const speed = 20; // Speed of typing in milliseconds
+
+            function type() {
+              if (i < text.length) {
+                elementId.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+              }
+            }
+
+            type();
+          }
+          const textToType = `Is ${country.value} your current location?`;
+          var newDiv = document.createElement('h1');
+          newDiv.className = 'your-country';
+          typeWriterEffect(textToType, newDiv);
+          phNumber.appendChild(newDiv);
+        }, 1000);
+        nextDiv.style.display = 'none';
+
+        setTimeout(() => {
+          yes.style.display = 'block';
+        }, 1000);
+      });
+
+      differentBtn.addEventListener('click', () => {
+        countriesContainer.style.transform = 'translateY(-80vh)';
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.querySelector('.search-input');
+        const locationSearch = document.querySelector('.location-search');
+        const locationHeader = document.querySelector('.location-header');
+
+        searchInput.addEventListener('focus', function () {
+          locationSearch.style.marginTop = '-40px';
+          locationHeader.style.opacity = '0'; // Hide the location header
+        });
+
+        searchInput.addEventListener('blur', function () {
+          locationSearch.style.marginTop = '40px'; // Adjust the initial margin-top value
+          locationHeader.style.opacity = '1'; // Show the location header
+        });
+      });
+    </script>
+  </body>
+</html>
