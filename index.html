@@ -57,7 +57,36 @@
           <i class="fas fa-search search-icon"></i>
           <input type="search" class="search-input" placeholder="Search..." />
         </div>
-        <div class="locations"></div>
+        <div class="radios">
+            <div class="radio">
+              <label id="label" for="countries"
+                ><p>Myanmar</p>
+                <span>+95</span></label
+              >
+              <input type="radio" name="countries" id="countries" />
+            </div>
+            <div class="radio">
+              <label id="label" for="myanmar"
+                ><p>Myanmar</p>
+                <span>+95</span></label
+              >
+              <input type="radio" name="countries" id="myanmar" />
+            </div>
+            <div class="radio">
+              <label id="label" for="poland"
+                ><p>Myanmar</p>
+                <span>+95</span></label
+              >
+              <input type="radio" name="countries" id="poland" />
+            </div>
+            <div class="radio">
+              <label id="label" for="us"
+                ><p>Myanmar</p>
+                <span>+95</span></label
+              >
+              <input type="radio" name="countries" id="us" />
+            </div>
+          </div>
         <div class="magnify-container">
           <div class="glass">
             <div class="magnify"></div>
@@ -126,15 +155,21 @@
         const searchInput = document.querySelector('.search-input');
         const locationSearch = document.querySelector('.location-search');
         const locationHeader = document.querySelector('.location-header');
+        const radio = document.querySelector('.radios')
+        const magnify = document.querySelector('.magnify-container')
 
         searchInput.addEventListener('focus', function () {
           locationSearch.style.marginTop = '-40px';
           locationHeader.style.opacity = '0'; // Hide the location header
+          magnify.style.opacity = '1'
+          radio.style.display = "none"
         });
 
         searchInput.addEventListener('blur', function () {
           locationSearch.style.marginTop = '40px'; // Adjust the initial margin-top value
           locationHeader.style.opacity = '1'; // Show the location header
+          magnify.style.opacity = '0'
+          radio.style.display = "block"
         });
       });
     </script>
