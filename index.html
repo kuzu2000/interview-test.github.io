@@ -59,7 +59,7 @@
         </div>
         <div class="locations"></div>
         <div class="continue-btn">
-          <button>Continue</button>
+          <button id="continue">Continue</button>
         </div>
       </div>
     </div>
@@ -107,7 +107,14 @@
       });
 
       differentBtn.addEventListener('click', () => {
-        countriesContainer.style.transform = 'translateY(-80vh)';
+        countriesContainer.style.transform = 'translateY(-85vh)';
+      });
+
+
+      const contiuneBtn = document.querySelector('#continue')
+      contiuneBtn.addEventListener('click', () => {
+        countriesContainer.style.transform = 'translateY(20vh)';
+        countriesContainer.style.transition = '.5s';
       });
 
       document.addEventListener('DOMContentLoaded', function () {
