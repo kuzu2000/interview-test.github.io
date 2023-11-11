@@ -42,6 +42,7 @@ body {
     color: inherit;
     text-decoration: none;
     cursor: pointer;
+    font-size: 1.2rem;
   }
 
   .description {
@@ -189,7 +190,7 @@ body {
     position: relative;
     max-width: 100%;
     margin-top: 40px;
-  transition: margin-top 0.3s ease;
+    transition: margin-top 0.3s ease;
   }
 
   .search-input {
@@ -209,5 +210,75 @@ body {
     left: 10px;
     transform: translateY(-50%);
     color: #555;
+  }
+
+  .magnify-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .glass {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .magnify {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #333;
+    border-radius: 50%;
+  
+    animation: moveMagnify 2.5s linear infinite;
+  }
+
+  .magnify:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #333;
+    top: 85%;
+    left: 100%;
+    transform:  rotate(-33deg);
+}
+
+  @keyframes moveMagnify {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translate(-100%, 100%);
+    }
+    50% {
+      transform: translate(100%, 100%);
+    }
+    75% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .text {
+    transition: transform 0.3s ease-in-out;
+    animation: enlargeText 5s linear infinite;
+  }
+
+  @keyframes enlargeText {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+      color: rgb(0, 31, 134);
+    }
   }
 }

@@ -58,6 +58,12 @@
           <input type="search" class="search-input" placeholder="Search..." />
         </div>
         <div class="locations"></div>
+        <div class="magnify-container">
+          <div class="glass">
+            <div class="magnify"></div>
+          </div>
+          <p class="text">No search results</p>
+        </div>
         <div class="continue-btn">
           <button id="continue">Continue</button>
         </div>
@@ -110,8 +116,7 @@
         countriesContainer.style.transform = 'translateY(-85vh)';
       });
 
-
-      const contiuneBtn = document.querySelector('#continue')
+      const contiuneBtn = document.querySelector('#continue');
       contiuneBtn.addEventListener('click', () => {
         countriesContainer.style.transform = 'translateY(20vh)';
         countriesContainer.style.transition = '.5s';
